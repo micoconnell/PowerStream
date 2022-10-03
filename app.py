@@ -16,7 +16,7 @@ tabs = st.tabs(["Open Interest By Month Through Time", "Plots", "reports"])
 
 tab_metrics = tabs[0]
 #@st.experimental_singleton
-@st.cache(suppress_st_warning=True) 
+#@st.cache(suppress_st_warning=True) 
 def init_connection():
     
     server =r'tcp:supowerdatabase.database.windows.net' 
