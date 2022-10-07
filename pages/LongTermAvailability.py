@@ -93,7 +93,7 @@ if button_ok:
 
 
     if option =='Coal':
-        ques = st.radio("Pick available Coal plants:",('GN1','GN2','GN3'))
+        ques = st.radio("Pick available Coal plants:",('GN1','GN2','GN3'),horizontal = True)
         name = ques
         st.write('You have selected',name,'. Please confirm that the dates: ', ss.dateRange[0], 'to ', ss.dateRange[1], 'are correct. If these dates are not correct, please press the reset button now. ' )
         button_Submit = st.button("Submit")
@@ -131,7 +131,7 @@ if button_ok:
         ques = st.radio("Pick available Coal plants:",('ANC1','ALP1','BHL1','GEN5','ENC1','ENC2','ENC3','CRS1','CRS2','CRS3','DRW1','HRM','GEN6','MEO3','MEO4',
         'MEO2','NPC2','NPC3','NPP1','ALP2','PH1','RB5','NAT1','SET1','VVW1','VVW2','WCD','PMB1','ALS1','HMT1','SCR1','BCRK','BCR2','BFD1','CNR5','COD1','CRG1','SHCG',
         'TC01','CL01','DOWG','TLM2','EPS1','SCR6','FH1','ECO4','HRT4','JOF1','IOR3','PEC1','MEG1','MKRC','IOR1','MUL1','MKR1','IOR2','NXO2','SCR5','PR1','RL1','TCO2',
-        'SDH1','APS1','IOR4','SCL1','UOC1','UOA1','ECO1','CAL1','FNG1','CMH1','NX01','EGC1','BR4','BR5','KH2','KH3','SH1','SH2','SD6'))
+        'SDH1','APS1','IOR4','SCL1','UOC1','UOA1','ECO1','CAL1','FNG1','CMH1','NX01','EGC1','BR4','BR5','KH2','KH3','SH1','SH2','SD6'),horizontal = True)
         name = ques
         st.write('You have selected',name,'. Please confirm that the dates: ', ss.dateRange[0], 'to ', ss.dateRange[1], 'are correct. If these dates are not correct, please press the reset button now. ' )
         button_Submit = st.button("Submit")
@@ -162,7 +162,7 @@ if button_ok:
                 cursor.commit()
         
     if option =='Hydro':
-        ques = st.radio("Pick available Coal plants:",('BIG','BOW1','BRA','CHIN','DKSN','ICP1','OMRH','RYMD','TAY1'))
+        ques = st.radio("Pick available Coal plants:",('BIG','BOW1','BRA','CHIN','DKSN','ICP1','OMRH','RYMD','TAY1'),horizontal = True)
         name = ques
         st.write('You have selected',name,'. Please confirm that the dates: ', ss.dateRange[0], 'to ', ss.dateRange[1], 'are correct. If these dates are not correct, please press the reset button now. ' )
         button_Submit = st.button("Submit")
@@ -193,7 +193,7 @@ if button_ok:
                 cursor.commit()
 
     if option =='Intertie':
-        ques = st.radio("Pick available Coal plants:",('BC_MATLIM','BCIM','MATLIM','SASKIM'))
+        ques = st.radio("Pick available Coal plants:",('BC_MATLIM','BCIM','MATLIM','SASKIM'),horizontal = True)
         name = ques
         st.write('You have selected',name,'. Please confirm that the dates: ', ss.dateRange[0], 'to ', ss.dateRange[1], 'are correct. If these dates are not correct, please press the reset button now. ' )
         button_Submit = st.button("Submit")
@@ -224,7 +224,7 @@ if button_ok:
                 cursor.commit()
 
     if option =='Energy':
-        ques = st.radio("Pick available Coal plants:",('SUM1','ERV1','ERV2','ERV3'))
+        ques = st.radio("Pick available Coal plants:",('SUM1','ERV1','ERV2','ERV3'),horizontal = True)
         name = ques
         st.write('You have selected',name,'. Please confirm that the dates: ', ss.dateRange[0], 'to ', ss.dateRange[1], 'are correct. If these dates are not correct, please press the reset button now. ' )
         button_Submit = st.button("Submit")
@@ -254,7 +254,7 @@ if button_ok:
                             WHERE DateNum >= ? AND DateNum <= ?'''.format(name),startDate,endDate)
                 cursor.commit()
     if option =='Other':
-        ques = st.radio("Pick available Other plants:",('AFG1','BON1','CCMH','DAI1','GOC1','GPEC','NRG3','SLP1','SRL1','WWD1','WST1','WEY1','EAGL'))
+        ques = st.radio("Pick available Other plants:",('AFG1','BON1','CCMH','DAI1','GOC1','GPEC','NRG3','SLP1','SRL1','WWD1','WST1','WEY1','EAGL'),horizontal = True)
         name = ques
         st.write('You have selected',name,'. Please confirm that the dates: ', ss.dateRange[0], 'to ', ss.dateRange[1], 'are correct. If these dates are not correct, please press the reset button now. ' )
         button_Submit = st.button("Submit")
@@ -285,7 +285,7 @@ if button_ok:
                 cursor.commit()
 
     if option =='Dual Fuel':
-        ques = st.radio("Pick available Duel Fuel plants:",('nada','zilch'))
+        ques = st.radio("Pick available Duel Fuel plants:",('nada','zilch'),horizontal = True)
         name = ques
         st.write('You have selected',name,'. Please confirm that the dates: ', ss.dateRange[0], 'to ', ss.dateRange[1], 'are correct. If these dates are not correct, please press the reset button now. ' )
         button_Submit = st.button("Submit")
@@ -316,7 +316,7 @@ if button_ok:
                 cursor.commit()
 
     if option =='Solar':
-        ques = st.radio("Solar is all under one header:",('groupedOutagesSolar'))
+        ques = st.button("Solar is all under one header: Press this button to set insert function to True.")
         name = ques
         st.write('You have selected',name,'. Please confirm that the dates: ', ss.dateRange[0], 'to ', ss.dateRange[1], 'are correct. If these dates are not correct, please press the reset button now. ' )
         button_Submit = st.button("Submit")
@@ -345,36 +345,36 @@ if button_ok:
                             SET {0} = 0
                             WHERE DateNum >= ? AND DateNum <= ?'''.format(name),startDate,endDate)
                 cursor.commit()
-        if option =='Wind':
-            ques = st.radio("Wind is all under one header:",('groupedOutagesWind'))
-            name = ques
-            st.write('You have selected',name,'. Please confirm that the dates: ', ss.dateRange[0], 'to ', ss.dateRange[1], 'are correct. If these dates are not correct, please press the reset button now. ' )
-            button_Submit = st.button("Submit")
-            startDate = ss.dateRange[0].strftime("%Y%m%d")
-            endDate = ss.dateRange[-1].strftime("%Y%m%d")
-            if button_Submit:
-                button_finalChanges = st.button("Pressing this box will make these changes to the database. Are you Sure?")
-                if button_finalChanges:
-                    def init_connection():
+    if option =='Wind':
+        quesb = st.button("Wind is all under one header: Press this button to set insert function to True.")
+        name = quesb
+        st.write('You have selected',name,'. Please confirm that the dates: ', ss.dateRange[0], 'to ', ss.dateRange[1], 'are correct. If these dates are not correct, please press the reset button now. ' )
+        button_Submit = st.button("Submit")
+        startDate = ss.dateRange[0].strftime("%Y%m%d")
+        endDate = ss.dateRange[-1].strftime("%Y%m%d")
+        if button_Submit:
+            button_finalChanges = st.button("Pressing this box will make these changes to the database. Are you Sure?")
+            if button_finalChanges:
+                def init_connection():
 
-                        server =r'tcp:supowerdatabase.database.windows.net' 
-                        database =r'SUpowerFinancials' 
-                        username =r'micoconnell1' 
-                        password =r'anisoTropical+308'
-                        driver= r'{ODBC Driver 17 for SQL Server}'
-                        
-                        cnxn = pyodbc.connect('DRIVER=' + driver + ';SERVER=' +
-                        server + ';PORT=1433;DATABASE=' + database +
-                        ';UID=' + username + ';PWD=' + password)
-                        cursor = cnxn.cursor()
-                        return cursor
+                    server =r'tcp:supowerdatabase.database.windows.net' 
+                    database =r'SUpowerFinancials' 
+                    username =r'micoconnell1' 
+                    password =r'anisoTropical+308'
+                    driver= r'{ODBC Driver 17 for SQL Server}'
+                    
+                    cnxn = pyodbc.connect('DRIVER=' + driver + ';SERVER=' +
+                    server + ';PORT=1433;DATABASE=' + database +
+                    ';UID=' + username + ';PWD=' + password)
+                    cursor = cnxn.cursor()
+                    return cursor
 
-                    cursor = init_connection()
-                    cursor.execute('''
-                                UPDATE windAB
-                                SET {0} = 0
-                                WHERE DateNum >= ? AND DateNum <= ?'''.format(name),startDate,endDate)
-                    cursor.commit()
+                cursor = init_connection()
+                cursor.execute('''
+                            UPDATE windAB
+                            SET {0} = 0
+                            WHERE DateNum >= ? AND DateNum <= ?'''.format(name),startDate,endDate)
+                cursor.commit()
 
 
 
