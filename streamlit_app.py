@@ -101,10 +101,9 @@ with tab_flags:
     st.write("Start time:", start_time)
     numpy_date = np.datetime64(start_time)
     res = [x for x in range(len(listunique)) if listunique[x] == numpy_date]
-    print("AYE")
-    print(res)
+
     #dab = dl[dl['dateModified'] == listunique[47]]
-    print(dab)
+
     fig = go.Figure()
     
     fig.add_trace(go.Scatter(x=dab.begin_datetime_mpt, y=dab.forecast_alberta_internal_load, name="hello",mode = 'lines',
