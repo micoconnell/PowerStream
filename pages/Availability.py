@@ -15,21 +15,37 @@ from azure.storage.blob import BlobClient
 from azure.storage.blob import ContainerClient
 import pandas as pd
 import asyncio
-
+import time
 st.set_page_config(page_title="Dahlia", page_icon="random", layout="wide", initial_sidebar_state="expanded")
 st.title("Dahlia")
-import time
+
+
+# def form_callback():
+#     st.write(st.session_state.my_slider)
+#     st.write(st.session_state.my_checkbox)
+
+
+# with st.form(key='my_form'):
+#     slider_input = st.slider('My slider', 0, 10, 5, key='my_slider')
+#     checkbox_input = st.checkbox('Yes or No', key='my_checkbox')
+#     submit_button = st.form_submit_button(label='Submit', on_click=form_callback)
 
 
 
 
-    # 
-blob_service_client = BlobServiceClient.from_connection_string("DefaultEndpointsProtocol=https;AccountName=suncoravailabilityblob;AccountKey=xyH38moVc3iB9kCMxbgP4pCTLePm887BSqBNjjDLEsDRUC7MCSbxFp3hu6lUmOjLyCa57uVD2ii1+ASt//oE2w==;EndpointSuffix=core.windows.net")
-container_client = blob_service_client.get_container_client("90dayevent")
-blobs_list = container_client.list_blobs()
-for blob in blobs_list:
-    print(blob.name + '\n')
+
+
 with st.container():
+
+    blob_service_client = BlobServiceClient.from_connection_string("DefaultEndpointsProtocol=https;AccountName=suncoravailabilityblob;AccountKey=xyH38moVc3iB9kCMxbgP4pCTLePm887BSqBNjjDLEsDRUC7MCSbxFp3hu6lUmOjLyCa57uVD2ii1+ASt//oE2w==;EndpointSuffix=core.windows.net")
+    container_client = blob_service_client.get_container_client("events7day")
+    blobs_list = container_client.list_blobs()
+    for blob in blobs_list:
+        print(blob.name + '\n')
+
+
+
+
     mystyle = '''
         <style>
             p {
@@ -40,8 +56,8 @@ with st.container():
 
     st.markdown(mystyle, unsafe_allow_html=True)
 
-    if not 'todolist' in st.session_state:
-        st.session_state.todolist = []
+    # if not 'todolist' in st.session_state:
+    #     st.session_state.todolist = []
     col1,col2,col3,col4=st.columns((2,1,1,1))
 
 
@@ -73,6 +89,7 @@ with st.container():
     for i in range(0,len(list(eventlist))):
         blob_client = container_client.get_blob_client(eventlist[i])
         dfupdate = blob_client.download_blob()
+        print(dfupdate)
         dfupdate = pd.read_csv(dfupdate)
         DF_list.append(dfupdate)
     for i in range(0,len(list(DF_list))):
@@ -93,8 +110,8 @@ with st.container():
 
     st.markdown(mystyle, unsafe_allow_html=True)
 
-    if not 'todolist' in st.session_state:
-        st.session_state.todolist = []
+    # if not 'todolist' in st.session_state:
+    #     st.session_state.todolist = []
     col1,col2,col3,col4=st.columns((2,1,1,1))
 
 
@@ -102,6 +119,8 @@ with st.container():
     df = blob_client.download_blob()
     df = pd.read_csv(df)
     col1.dataframe(df)
+
+    
     blob_service_client = BlobServiceClient.from_connection_string("DefaultEndpointsProtocol=https;AccountName=suncoravailabilityblob;AccountKey=xyH38moVc3iB9kCMxbgP4pCTLePm887BSqBNjjDLEsDRUC7MCSbxFp3hu6lUmOjLyCa57uVD2ii1+ASt//oE2w==;EndpointSuffix=core.windows.net")
     container_client = blob_service_client.get_container_client("90dayevent")
     eventlist = []
@@ -125,6 +144,17 @@ with st.container():
         if dbb:
             col4.write('Selected!')
     col4.button('Eliminate Daily')
+
+
+
+
+
+
+
+
+
+
+############################################################################   
 with st.container():
     mystyle = '''
         <style>
@@ -136,8 +166,8 @@ with st.container():
 
     st.markdown(mystyle, unsafe_allow_html=True)
 
-    if not 'todolist' in st.session_state:
-        st.session_state.todolist = []
+    # if not 'todolist' in st.session_state:
+    #     st.session_state.todolist = []
     col1,col2,col3,col4=st.columns((2,1,1,1))
 
 
@@ -169,10 +199,10 @@ with st.container():
             col4.write('Selected!')
     col4.button('Eliminate Monthly')
 
-async def periodic():
-    while True:
+# async def periodic():
+#     while True:
         
-        r = await asyncio.sleep(1)
-        st.write(f"asyncio sleep ? {r}")
+#         r = await asyncio.sleep(15)
+        
 
-asyncio.run(periodic())
+# asyncio.run(periodic())
