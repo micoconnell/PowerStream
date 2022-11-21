@@ -93,7 +93,7 @@ if button_ok:
 
 
     if option =='Coal':
-        ques = st.radio("Pick available Coal plants:",('GN1','GN2','GN3','Unknown'),horizontal = True)
+        ques = st.radio("Pick available Coal plants:",('GN1','GN2','Unknown'),horizontal = True)
         name = ques
         st.write('You have selected',name,'. Please confirm that the dates: ', ss.dateRange[0], 'to ', ss.dateRange[1], 'are correct. If these dates are not correct, please press the reset button now. ' )
         button_Submit = st.button("Submit")
