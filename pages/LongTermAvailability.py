@@ -119,7 +119,7 @@ if button_ok:
                 cursor = init_connection()
                 cursor.execute('''
                             UPDATE coalAB
-                            SET {0} = user_input
+                            SET {0} = 400
                             WHERE DateNum >= ? AND DateNum <= ?'''.format(name),startDate,endDate)
                 cursor.commit()
 
